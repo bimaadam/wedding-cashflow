@@ -1,5 +1,5 @@
 <?php
-$title = "Pemasukan"; // kalau mau dynamic title
+$pageTitle = "Pemasukan"; // kalau mau dynamic title
 ob_start();
 ?>
 

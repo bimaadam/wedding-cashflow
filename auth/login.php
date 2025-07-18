@@ -80,10 +80,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left p-5">
                             <div class="brand-logo">
-                                <img src="../assets/images/logo.svg" />
+                                <!-- <img src="../assets/images/logo.svg" /> -->
                             </div>
-                            <h4>Hello! let's get started</h4>
-                            <h6 class="font-weight-light">Sign in to continue.</h6>
+                            <h4>Halo Selamat Datang di Wedding Cashflow</h4>
+                            <h6 class="font-weight-light">Login.</h6>
                             <form class="pt-3" method="POST" action="">
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" name="username" placeholder="Username" required />

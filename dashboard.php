@@ -5,23 +5,17 @@ if (!isset($_SESSION['user_id'])) {
   exit();
 }
 
-$title = 'Dashboard';
+$pageTitle = 'Dashboard';
 ob_start();
 ?>
 
 <div class="page-header">
-  <h3 class="page-title">
-    <span class="page-title-icon bg-gradient-primary text-white me-2">
-      <i class="mdi mdi-home"></i>
-    </span>
-    Dashboard
-  </h3>
   <nav aria-label="breadcrumb">
     <ul class="breadcrumb">
-      <li class="breadcrumb-item active" aria-current="page">
+      <!-- <li class="breadcrumb-item active" aria-current="page">
         Overview
         <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </div>
@@ -36,7 +30,7 @@ ob_start();
         </p>
         <div class="alert alert-info" role="alert">
           <i class="mdi mdi-information-outline me-2"></i>
-          <strong>Informasi:</strong> Gunakan sidebar buat navigasi ke fitur lainnya.
+          <strong>Informasi:</strong> Masih dalam tahap pengembangan
         </div>
       </div>
     </div>

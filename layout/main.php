@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_id'])) {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title><?= $title ?? 'GraceFull Wedding - Dashboard' ?></title>
+    <title><?= $title ?? 'GraceFul Wedding - Dashboard' ?></title>
 
     <!-- Essential CSS -->
     <link rel="stylesheet" href="./assets/css/main.style.css">

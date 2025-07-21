@@ -153,5 +153,5 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-include '../layout/main.php';
+include 'layout/main.php';
 ?>

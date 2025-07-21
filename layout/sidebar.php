@@ -28,8 +28,8 @@ if ($user_id) {
     <div class="sidebar-content">
       <!-- Brand Section -->
       <div class="brand-section">
-        <h2 class="brand-title">💰 FinanceApp</h2>
-        <p class="brand-subtitle">Kelola Keuangan Anda</p>
+        <h2 class="brand-title">💰 GracefulAdmin</h2>
+        <p class="brand-subtitle">kelola keuangan</p>
       </div>
 
       <!-- Profile Section -->

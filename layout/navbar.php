@@ -1,175 +1,160 @@
-<head>
-  <link rel="stylesheet" href="./assets/css/navbar.style.css"
-    </head>
+<?php
+if (session_status() === PHP_SESSION_NONE) session_start();
 
-  <nav class="modern-navbar">
-    <div class="navbar-content">
-      <!-- Mobile Hamburger -->
-      <button class="hamburger-btn" type="button" data-toggle="minimize">
-        <i class="mdi mdi-menu"></i>
+$user_id = $_SESSION['user_id'] ?? null;
+$username = $_SESSION['username'] ?? 'Pengguna';
+$user_email = $_SESSION['email'] ?? '';
+?>
+
+<nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+  <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+    <div class="me-3">
+      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+        <span class="icon-menu"></span>
       </button>
-
-      <!-- Brand Section -->
-      <div class="navbar-brand-section">
-        <a href="../index.html">
-          <img src="" alt="logo" class="brand-logo" />
-          GraceFul
-        </a>
-      </div>
-
-      <!-- Search Section -->
-      <div class="search-section">
-        <form class="modern-search">
-          <i class="mdi mdi-magnify search-icon"></i>
-          <input type="text" class="search-input" placeholder="Search anything..." />
-        </form>
-      </div>
-
-      <!-- Actions Section -->
-      <div class="navbar-actions">
-        <!-- Fullscreen Toggle -->
-        <button class="action-btn" id="fullscreen-button" title="Toggle Fullscreen">
-          <i class="mdi mdi-fullscreen"></i>
-        </button>
-
-        <!-- Messages Dropdown -->
-        <div class="dropdown">
-          <button class="action-btn" data-bs-toggle="dropdown" title="Messages">
-            <i class="mdi mdi-email-outline"></i>
-            <span class="notification-badge"></span>
-          </button>
-          <div class="dropdown-menu dropdown-menu-end message-dropdown">
-            <div class="dropdown-header">
-              <i class="mdi mdi-email-outline me-2"></i>Messages
-            </div>
-            <a href="#" class="message-item">
-              <img src="../assets/images/faces/face4.jpg" alt="user" class="message-avatar">
-              <div class="item-content">
-                <h6>Mark Johnson</h6>
-                <p>Hey! How's the project going?</p>
-                <small class="text-muted">2 minutes ago</small>
-              </div>
-            </a>
-            <a href="#" class="message-item">
-              <img src="./assets/images/faces/face2.jpg" alt="user" class="message-avatar">
-              <div class="item-content">
-                <h6>Sarah Wilson</h6>
-                <p>Meeting rescheduled to 3 PM</p>
-                <small class="text-muted">15 minutes ago</small>
-              </div>
-            </a>
-            <a href="#" class="message-item">
-              <img src="../assets/images/faces/face3.jpg" alt="user" class="message-avatar">
-              <div class="item-content">
-                <h6>Alex Chen</h6>
-                <p>Design files are ready for review</p>
-                <small class="text-muted">1 hour ago</small>
-              </div>
-            </a>
-            <div class="dropdown-footer">
-              <a href="#">View All Messages</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Notifications Dropdown -->
-        <div class="dropdown">
-          <button class="action-btn" data-bs-toggle="dropdown" title="Notifications">
-            <i class="mdi mdi-bell-outline"></i>
-            <span class="notification-badge"></span>
-          </button>
-          <div class="dropdown-menu dropdown-menu-end notification-dropdown">
-            <div class="dropdown-header">
-              <i class="mdi mdi-bell-outline me-2"></i>Notifications
-            </div>
-            <a href="#" class="notification-item">
-              <div class="notification-icon success">
-                <i class="mdi mdi-calendar-check"></i>
-              </div>
-              <div class="item-content">
-                <h6>Event Today</h6>
-                <p>You have a wedding consultation at 2 PM</p>
-                <small class="text-muted">10 minutes ago</small>
-              </div>
-            </a>
-            <a href="#" class="notification-item">
-              <div class="notification-icon warning">
-                <i class="mdi mdi-alert-circle"></i>
-              </div>
-              <div class="item-content">
-                <h6>Payment Reminder</h6>
-                <p>Invoice #1234 is due tomorrow</p>
-                <small class="text-muted">1 hour ago</small>
-              </div>
-            </a>
-            <a href="#" class="notification-item">
-              <div class="notification-icon info">
-                <i class="mdi mdi-information"></i>
-              </div>
-              <div class="item-content">
-                <h6>System Update</h6>
-                <p>New features are now available</p>
-                <small class="text-muted">2 hours ago</small>
-              </div>
-            </a>
-            <div class="dropdown-footer">
-              <a href="#">View All Notifications</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Profile Dropdown -->
-        <div class="dropdown">
-          <div class="profile-section" data-bs-toggle="dropdown">
-            <img src="./assets/images/faces-clipart/pic-1.png" alt="profile" class="profile-avatar">
-            <div class="profile-info">
-              <p class="profile-name"><?= $_SESSION['username'] ?? 'Guest' ?></p>
-              <p class="profile-status">● Online</p>
-            </div>
-            <i class="mdi mdi-chevron-down" style="color: #667eea;"></i>
-          </div>
-          <div class="dropdown-menu dropdown-menu-end">
-            <a class="dropdown-item" href="#">
-              <i class="mdi mdi-account-circle"></i>
-              My Profile
-            </a>
-            <a class="dropdown-item" href="#">
-              <i class="mdi mdi-cog"></i>
-              Settings
-            </a>
-            <a class="dropdown-item" href="#">
-              <i class="mdi mdi-help-circle"></i>
-              Help & Support
-            </a>
-            <hr class="dropdown-divider">
-            <a class="dropdown-item" href="auth/logout.php">
-              <i class="mdi mdi-logout text-danger"></i>
-              Sign Out
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
-  </nav>
-
-  <script>
-    // Fullscreen Toggle
-    document.getElementById('fullscreen-button').addEventListener('click', function() {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-        this.innerHTML = '<i class="mdi mdi-fullscreen-exit"></i>';
-      } else {
-        document.exitFullscreen();
-        this.innerHTML = '<i class="mdi mdi-fullscreen"></i>';
-      }
-    });
-
-    // Search functionality
-    document.querySelector('.search-input').addEventListener('input', function(e) {
-      const query = e.target.value;
-      if (query.length > 2) {
-        // Add your search logic here
-        console.log('Searching for:', query);
-      }
-    });
-  </script>
+    <div>
+      <a class="navbar-brand brand-logo" href="dashboard.php">
+        <img src="assets/images/logo.svg" alt="logo" />
+      </a>
+      <a class="navbar-brand brand-logo-mini" href="dashboard.php">
+        <img src="assets/images/logo-mini.svg" alt="logo" />
+      </a>
+    </div>
+  </div>
+  <div class="navbar-menu-wrapper d-flex align-items-top">
+    <ul class="navbar-nav">
+      <li class="nav-item fw-semibold d-none d-lg-block ms-0">
+        <h1 class="welcome-text">
+          Good Morning, <span class="text-black fw-bold"><?php echo htmlspecialchars($username); ?></span>
+        </h1>
+        <h3 class="welcome-sub-text">
+          Wedding Cash Flow Management Dashboard
+        </h3>
+      </li>
+    </ul>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item dropdown d-none d-lg-block">
+        <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="quickActions" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+          Quick Actions
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="quickActions">
+          <a class="dropdown-item py-3">
+            <p class="mb-0 fw-medium float-start">Quick Actions</p>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item" href="event.php">
+            <div class="preview-item-content flex-grow py-2">
+              <p class="preview-subject ellipsis fw-medium text-dark">
+                Add New Event
+              </p>
+              <p class="fw-light small-text mb-0">
+                Create a new wedding event
+              </p>
+            </div>
+          </a>
+          <a class="dropdown-item preview-item" href="pemasukan/">
+            <div class="preview-item-content flex-grow py-2">
+              <p class="preview-subject ellipsis fw-medium text-dark">
+                Record Income
+              </p>
+              <p class="fw-light small-text mb-0">
+                Add new income transaction
+              </p>
+            </div>
+          </a>
+          <a class="dropdown-item preview-item" href="pengeluaran.php">
+            <div class="preview-item-content flex-grow py-2">
+              <p class="preview-subject ellipsis fw-medium text-dark">
+                Record Expense
+              </p>
+              <p class="fw-light small-text mb-0">
+                Add new expense transaction
+              </p>
+            </div>
+          </a>
+          <a class="dropdown-item preview-item" href="cashflow.php">
+            <div class="preview-item-content flex-grow py-2">
+              <p class="preview-subject ellipsis fw-medium text-dark">
+                View Cash Flow
+              </p>
+              <p class="fw-light small-text mb-0">
+                Check financial overview
+              </p>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item d-none d-lg-block">
+        <div id="datepicker-popup" class="input-group date datepicker navbar-date-picker">
+          <span class="input-group-addon input-group-prepend border-right">
+            <span class="icon-calendar input-group-text calendar-icon"></span>
+          </span>
+          <input type="text" class="form-control" />
+        </div>
+      </li>
+      <li class="nav-item">
+        <form class="search-form" action="search.php" method="GET">
+          <i class="icon-search"></i>
+          <input type="search" name="q" class="form-control" placeholder="Search transactions..." title="Search here" />
+        </form>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link count-indicator" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+          <i class="icon-bell"></i>
+          <span class="count"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="notificationDropdown">
+          <a class="dropdown-item py-3 border-bottom">
+            <p class="mb-0 fw-medium float-start">
+              You have 0 new notifications
+            </p>
+            <span class="badge badge-pill badge-primary float-end">View all</span>
+          </a>
+          <a class="dropdown-item preview-item py-3">
+            <div class="preview-thumbnail">
+              <i class="mdi mdi-information m-auto text-primary"></i>
+            </div>
+            <div class="preview-item-content">
+              <h6 class="preview-subject fw-normal text-dark mb-1">
+                No new notifications
+              </h6>
+              <p class="fw-light small-text mb-0">All caught up!</p>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+        <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+          <img class="img-xs rounded-circle" src="assets/images/faces/face8.jpg" alt="Profile image" />
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+          <div class="dropdown-header text-center">
+            <img class="img-md rounded-circle" src="assets/images/faces/face8.jpg" alt="Profile image" />
+            <p class="mb-1 mt-3 fw-semibold"><?php echo htmlspecialchars($username); ?></p>
+            <p class="fw-light text-muted mb-0"><?php echo htmlspecialchars($user_email); ?></p>
+          </div>
+          <a class="dropdown-item" href="settings/profile.php">
+            <i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>
+            My Profile
+          </a>
+          <a class="dropdown-item" href="settings/company.php">
+            <i class="dropdown-item-icon mdi mdi-settings text-primary me-2"></i>
+            Settings
+          </a>
+          <a class="dropdown-item" href="reports/financial.php">
+            <i class="dropdown-item-icon mdi mdi-chart-line text-primary me-2"></i>
+            Reports
+          </a>
+          <a class="dropdown-item" href="auth/logout.php">
+            <i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>
+            Sign Out
+          </a>
+        </div>
+      </li>
+    </ul>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
+      <span class="mdi mdi-menu"></span>
+    </button>
+  </div>
+</nav>

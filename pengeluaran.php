@@ -9,6 +9,26 @@ require_once 'config/koneksi.php';
 
 $pageTitle = 'Pengeluaran - Graceful Decoration';
 
+// Handle delete
+if (isset($_GET['delete'])) {
+    $id = intval($_GET['delete']);
+    $stmt = $conn->prepare("DELETE FROM pengeluaran WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    
+    if ($stmt->execute()) {
+        header("Location: pengeluaran.php?message=deleted");
+        exit();
+    } else {
+        $error_message = "Gagal menghapus data: " . $conn->error;
+    }
+    $stmt->close();
+}
+
+// Handle success message
+if (isset($_GET['message']) && $_GET['message'] == 'deleted') {
+    $success_message = "Data pengeluaran berhasil dihapus!";
+}
+
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $event_id = $_POST['event_id'];
@@ -352,8 +372,8 @@ $monthly_result = $conn->query($monthly_query);
                       </strong>
                     </td>
                     <td>
-                      <button class="btn btn-outline-primary btn-sm">Edit</button>
-                      <button class="btn btn-outline-danger btn-sm">Hapus</button>
+                      <button class="btn btn-outline-primary btn-sm btn-edit" data-id="<?php echo $pengeluaran['id']; ?>">Edit</button>
+                      <button class="btn btn-outline-danger btn-sm btn-delete" data-id="<?php echo $pengeluaran['id']; ?>">Hapus</button>
                     </td>
                   </tr>
                 <?php endwhile; ?>
@@ -409,6 +429,27 @@ document.querySelectorAll('.expense-input').forEach(input => {
 
 // Initial calculation
 calculateTotal();
+
+// Handle Edit button
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('btn-edit')) {
+        e.preventDefault();
+        const id = e.target.getAttribute('data-id');
+        // Implementasi edit - bisa menggunakan modal atau redirect
+        if (confirm('Fitur edit akan segera tersedia. Untuk sementara, silakan tambah data baru.')) {
+            // window.location.href = 'edit-pengeluaran.php?id=' + id;
+        }
+    }
+    
+    if (e.target.classList.contains('btn-delete')) {
+        e.preventDefault();
+        const id = e.target.getAttribute('data-id');
+        if (confirm('Apakah Anda yakin ingin menghapus data pengeluaran ini?')) {
+            // Implementasi delete
+            window.location.href = 'pengeluaran.php?delete=' + id;
+        }
+    }
+});
 </script>
 
 <?php $content = ob_get_clean(); ?>

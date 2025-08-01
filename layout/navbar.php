@@ -15,10 +15,10 @@ $user_email = $_SESSION['email'] ?? '';
     </div>
     <div>
       <a class="navbar-brand brand-logo" href="dashboard.php">
-        <img src="assets/images/logo.svg" alt="logo" />
+        <img src="assets/images/" alt="logo" />
       </a>
       <a class="navbar-brand brand-logo-mini" href="dashboard.php">
-        <img src="assets/images/logo-mini.svg" alt="logo" />
+        <img src="assets/images/" alt="logo" />
       </a>
     </div>
   </div>
